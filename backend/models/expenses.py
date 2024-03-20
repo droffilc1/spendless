@@ -2,10 +2,10 @@
 """Contains an Expense class"""
 
 from sqlalchemy import Column, String, Float, Integer, ForeignKey
-from models.base_models import BaseModel
+from models.base_models import BaseModel, Base
 
 
-class Expenses(BaseModel):
+class Expenses(BaseModel, Base):
     """Representaiton of an expense."""
     __tablename__ = 'expenses'
     amount = Column(Float, nullable=False)
