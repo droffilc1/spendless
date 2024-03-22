@@ -5,7 +5,7 @@ from sqlalchemy import Column, String, Float, Integer, ForeignKey
 from models.base_models import BaseModel, Base
 
 
-class Expenses(BaseModel, Base):
+class Expense(BaseModel, Base):
     """Representaiton of an expense."""
     __tablename__ = 'expenses'
     amount = Column(Float, nullable=False)

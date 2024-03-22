@@ -6,12 +6,12 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 import models
 from models.base_models import BaseModel, Base
-from models.categories import Categories
-from models.users import User
-from models.expenses import Expenses
+from models.category import Category
+from models.user import User
+from models.expense import Expense
 
 
-classes = {"User": User, "Categories": Categories, "Expenses": Expenses}
+classes = {"User": User, "Category": Category, "Expense": Expense}
 
 
 class DBStorage:
@@ -67,6 +67,9 @@ class DBStorage:
         Session = scoped_session(session_factory)
         self.__session = Session
 
+    def close(self):
+        """Call remove methid on the private instance attribute"""
+        self.__session.remove()
     def get(self, cls, id):
         """Returns the object based on the class name and its ID, or
         None if not found
@@ -80,3 +83,16 @@ class DBStorage:
                 return value
 
         return None
+
+    def count(self, cls=None):
+        """Count the number of objects in storage"""
+        all_class = classes.values()
+
+        if not cls:
+            count = 0
+            for clas in all_class:
+                count += len(models.storage.all(clas).values())
+        else:
+            count = len(models.storage.all(cls).values())
+
+        return count
