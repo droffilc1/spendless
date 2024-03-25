@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Objects that handle all default Restful API actions for users"""
+"""Objects that handle all default Restful API actions for expenses"""
 from flask import abort, jsonify, make_response, request
 from models.expense import Expense
 from models import storage
@@ -20,7 +20,7 @@ def get_expenses():
 
 @app_views.route('/expenses/<expense_id>', methods=['GET'],
                  strict_slashes=False)
-def get_user(expense_id):
+def get_expense(expense_id):
     """Retrieves an expense"""
     expense = storage.get(Expense, expense_id)
     if not expense:
@@ -30,7 +30,7 @@ def get_user(expense_id):
 
 @app_views.route('/expenses/<expense_id>', methods=['DELETE'],
                  strict_slashes=False)
-def delete_user(expense_id):
+def delete_expense(expense_id):
     """Deletes an expense object"""
 
     expense = storage.get(Expense, expense_id)
@@ -44,7 +44,7 @@ def delete_user(expense_id):
 
 
 @app_views.route('/expenses', methods=['POST'], strict_slashes=False)
-def post_user():
+def post_expense():
     """Create an Expense"""
     if not request.get_json():
         abort(400, "Not a JSON")
@@ -63,7 +63,7 @@ def post_user():
 
 
 @app_views.route('/expenses/<user_id>', methods=['PUT'], strict_slashes=False)
-def put_user(user_id):
+def put_expense(user_id):
     """Updateds an expense"""
     expense = storage.get(Expense, user_id)
 
