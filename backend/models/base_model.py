@@ -6,7 +6,6 @@ from sqlalchemy import Column, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 import models
 
-
 time = "%Y-%m-%dT%H:%M:%S.%f"
 
 Base = declarative_base()
@@ -21,7 +20,7 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
         """Initializing the instances
 
-        Args:s
+        Args:
         id: string - assigned with an uuid when an instance is created.
         created_at: datetime - assigned with the current datetime when
                     an instance is created.
