@@ -1,0 +1,15 @@
+Deletes an expense based on the id provided
+---
+tags:
+  - Expenses
+parameters:
+  - name: user_id
+    in: path
+    type: string
+    required: true
+    description: The uuid of the expense to delete
+responses:
+  404:
+    description: Expense not found!
+  200:
+    description: Deletion request sucessful

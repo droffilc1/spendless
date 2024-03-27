@@ -1,12 +1,14 @@
 #!/usr/bin/python3
 """Objects that handle all default Restful API actions for expenses"""
 from flask import abort, jsonify, make_response, request
+from flasgger import swag_from
 from models.expense import Expense
 from models import storage
 from api.v1.views import app_views
 
 
 @app_views.route('/expenses', methods=['GET'], strict_slashes=False)
+@swag_from('documentation/expenses/get_expenses.yml', methods=['GET'])
 def get_expenses():
     """Retrieves the list of all expense objects
     or a specific expense
@@ -20,6 +22,7 @@ def get_expenses():
 
 @app_views.route('/expenses/<expense_id>', methods=['GET'],
                  strict_slashes=False)
+@swag_from('documentation/expenses/get_expense.yml', methods='GET')
 def get_expense(expense_id):
     """Retrieves an expense"""
     expense = storage.get(Expense, expense_id)
@@ -30,6 +33,7 @@ def get_expense(expense_id):
 
 @app_views.route('/expenses/<expense_id>', methods=['DELETE'],
                  strict_slashes=False)
+@swag_from('documentation/expenses/delete_expense.yml', methods=['DELETE'])
 def delete_expense(expense_id):
     """Deletes an expense object"""
 
@@ -44,6 +48,7 @@ def delete_expense(expense_id):
 
 
 @app_views.route('/expenses', methods=['POST'], strict_slashes=False)
+@swag_from('documentation/expenses/post_expense.yml', methods=['POST'])
 def post_expense():
     """Create an Expense"""
     if not request.get_json():
@@ -63,6 +68,7 @@ def post_expense():
 
 
 @app_views.route('/expenses/<user_id>', methods=['PUT'], strict_slashes=False)
+@swag_from('documentation/expenses/put_expense.yml', methods=['PUT'])
 def put_expense(user_id):
     """Updateds an expense"""
     expense = storage.get(Expense, user_id)
