@@ -4,6 +4,7 @@
 from os import getenv
 from flask import Flask, make_response, jsonify
 from flask_cors import CORS
+from flasgger import Swagger
 from models import storage
 from api.v1.views import app_views
 
@@ -27,6 +28,12 @@ def not_found(error):
             description: a resource was not found
     """
     return make_response(jsonify({"error": "Not found"}), 404)
+
+
+app.config['SWAGGER'] = {
+    'title': 'Spendless RESTful API'
+}
+Swagger(app)
 
 
 if __name__ == "__main__":

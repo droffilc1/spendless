@@ -6,7 +6,7 @@ parameters:
   - name: user_id
     in: path
     type: string
-    required: true
+    required: false
     description: the unique id of the expense
 responses:
   200:

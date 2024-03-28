@@ -2,13 +2,6 @@ Gets the list of all expenses of a user
 ---
 tags:
   - Expenses
-parameters:
-  - name: user_id
-    in: path
-    type: string
-    required: true
-    description: the unique id of the user
-
 responses:
   200:
     description: Successful request

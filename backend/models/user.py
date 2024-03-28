@@ -12,4 +12,4 @@ class User(BaseModel, Base):
     username = Column(String(50), unique=True, nullable=False)
     email = Column(String(100), unique=True, nullable=False)
     password = Column(String(100), nullable=False)
-    expenses = relationship('Expense', backref='user', lazy=True)
+    expenses = relationship('Expense', back_populates='user', cascade='all, delete-orphan')

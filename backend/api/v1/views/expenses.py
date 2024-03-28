@@ -15,14 +15,15 @@ def get_expenses():
     """
     all_expenses = storage.all(Expense).values()
     list_expenses = []
-    for user in all_expenses:
-        list_expenses.append(user.to_dict())
+    for expense in all_expenses:
+        print("Expense:", expense)
+        list_expenses.append(expense.to_dict())
     return jsonify(list_expenses)
 
 
 @app_views.route('/expenses/<expense_id>', methods=['GET'],
                  strict_slashes=False)
-@swag_from('documentation/expenses/get_expense.yml', methods='GET')
+@swag_from('documentation/expenses/get_expense.yml', methods=['GET'])
 def get_expense(expense_id):
     """Retrieves an expense"""
     expense = storage.get(Expense, expense_id)

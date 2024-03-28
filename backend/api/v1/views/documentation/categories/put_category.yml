@@ -1,0 +1,19 @@
+Updates the category info based on ID
+---
+tags:
+  - Categories
+parameters:
+  - name: user_id
+    in: path
+    type: string
+    required: true
+    description: the unique id of the category
+  - name: request
+    in: body
+    required: true
+
+responses:
+  404:
+    description: Category not found
+  200:
+    description: Request executed successfully

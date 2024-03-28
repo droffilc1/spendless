@@ -1,7 +1,7 @@
 Posts a new expense.
 ---
 tags:
-  - Places
+  - Expenses
 parameters:
   - name: user_id
     in: path

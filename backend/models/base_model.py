@@ -55,12 +55,13 @@ class BaseModel:
         with the current datetime."""
         self.updated_at = datetime.utcnow()
         models.storage.new(self)
-        models.storage(save)
+        models.storage.save()
 
     def to_dict(self):
         """Returns a dictionary containing all keys/values
         of __dict__ of the instance."""
         result_dict = self.__dict__.copy()
+        result_dict.pop('_sa_instance_state', None)
         result_dict['__class__'] = self.__class__.__name__
         result_dict['created_at'] = self.created_at.isoformat()
         result_dict['updated_at'] = self.updated_at.isoformat()
