@@ -11,3 +11,4 @@ from api.v1.views.expenses import *
 from api.v1.views.index import *
 from api.v1.views.login import *
 from api.v1.views.register import *
+from api.v1.views.logout import *

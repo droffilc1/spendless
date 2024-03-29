@@ -1,39 +1,22 @@
-swagger: '2.0'
-info:
-  title: Registration API
-  description: API endpoints for user registration
-  version: '1.0'
-basePath: /api/v1
+Posts Register.
+---
 tags:
-  - name: Authentication
-    description: Operations related to user authentication
-paths:
-  /register:
-    post:
-      tags:
-        - Authentication
-      summary: Register new user
-      description: |
-        Registers a new user with the provided credentials.
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - in: body
-          name: user
-          description: User information
-          required: true
-          schema:
-            type: object
-            properties:
-              username:
-                type: string
-                description: User's desired username
-              password:
-                type: string
-                format: password
-                description: User's desired password
+  - Register
+parameters:
+  - name: request
+    in: body
+    required: true
+    requires:
+      - username
+      - email
+      - password
+    properties:
+      username:
+        type: string
+      email:
+        type: string
+      password:
+        type: string
       responses:
         '201':
           description: User registration successful

@@ -13,10 +13,10 @@ from models.user import User
 def login():
     """User login"""
     data = request.json
-    username = data.get('username')
+    email = data.get('email')
     passsword = data.get('password')
 
-    user = User.query.filter_by(username=username).first()
+    user = User.query.filter_by(email=email).first()
     if not user or not check_password_hash(user.password, passsword):
         return jsonify({'message': 'Invalid username or password'}), 401
 
