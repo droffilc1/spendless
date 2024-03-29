@@ -1,16 +1,15 @@
 #!/usr/bin/pyhton3
 """Statistics and analytics"""
 from flask import jsonify
-from flask_jwt_extended import jwt_required,get_jwt_identity
+from flask_jwt_extended import jwt_required, get_jwt_identity
 from flasgger import swag_from
 from api.v1.views import app_views
 from models.user import User
 
 
-
 @app_views.route('/analytics', methods=['GET'])
 @swag_from('documentation/analytics/get_analytics.yml', methods=['GET'])
-@jwt_required()
+# @jwt_required()
 def get_analytics():
     """Retrieves expense statistics for the authenticated user."""
     current_user_id = get_jwt_identity()

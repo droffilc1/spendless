@@ -1,39 +1,19 @@
-swagger: '2.0'
-info:
-  title: Login API
-  description: API endpoints for user login
-  version: '1.0'
-basePath: /api/v1
+Posts login.
+---
 tags:
-  - name: Authentication
-    description: Operations related to user authentication
-paths:
-  /login:
-    post:
-      tags:
-        - Authentication
-      summary: Authenticate user
-      description: |
-        Authenticates a user with the provided credentials and returns an access token.
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - in: body
-          name: credentials
-          description: User credentials
-          required: true
-          schema:
-            type: object
-            properties:
-              username:
-                type: string
-                description: User's username
-              password:
-                type: string
-                format: password
-                description: User's password
+  - Login
+parameters:
+  - name: request
+    in: body
+    required: true
+    requires:
+      - email
+      - password
+    properties:
+      email:
+        type: string
+      password:
+        type: string
       responses:
         '200':
           description: Successful login

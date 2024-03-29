@@ -1,0 +1,19 @@
+Logs out current user
+---
+tags:
+  - Logout
+description: Logs out the current user.
+responses:
+  302:
+    description: Redirects the user to the home page after successful logout.
+  401:
+    description: Unauthorized - User is not authenticated.
+security:
+  - cookieAuth: []
+
+components:
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: session
