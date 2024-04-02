@@ -3,7 +3,7 @@ Updates the expense info based on ID
 tags:
   - Expenses
 parameters:
-  - name: user_id
+  - name: expense_id
     in: path
     type: string
     required: true

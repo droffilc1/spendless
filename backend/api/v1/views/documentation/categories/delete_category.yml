@@ -3,7 +3,7 @@ Deletes a category based on the id provided
 tags:
   - Categories
 parameters:
-  - name: user_id
+  - name: category_id
     in: path
     type: string
     required: true
@@ -12,4 +12,4 @@ responses:
   404:
     description: State not found!
   200:
-    description: Deletion request sucessful
+    description: Deletion request successful

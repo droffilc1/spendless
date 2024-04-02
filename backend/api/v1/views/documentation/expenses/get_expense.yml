@@ -3,7 +3,7 @@ Retrieves an expense
 tags:
   - Expense
 parameters:
-  - name: user_id
+  - name: expense_id
     in: path
     type: string
     required: false

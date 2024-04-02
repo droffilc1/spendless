@@ -1,21 +1,24 @@
 #!/usr/bin/pyhton3
 """Statistics and analytics"""
 from flask import jsonify
-from flask_jwt_extended import jwt_required, get_jwt_identity
+from flask_login import current_user
 from flasgger import swag_from
 from api.v1.views import app_views
 from models.user import User
+from models import storage
 
 
 @app_views.route('/analytics', methods=['GET'])
 @swag_from('documentation/analytics/get_analytics.yml', methods=['GET'])
-# @jwt_required()
 def get_analytics():
     """Retrieves expense statistics for the authenticated user."""
-    current_user_id = get_jwt_identity()
-    current_user = User.query.get(current_user_id)
+    user_id = current_user.get_id()
+    user = storage.get(User, 'id', user_id)
 
-    total_expenses = sum(expense.amount for expense in current_user.expenses)
+    if user is None:
+        return jsonify({"message": "User not found"}), 404
+
+    total_expenses = sum(expense.amount for expense in user.expenses)
 
     expenses_category = {}
     for expense in current_user.expenses:

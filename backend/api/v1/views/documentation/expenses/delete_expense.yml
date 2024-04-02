@@ -3,7 +3,7 @@ Deletes an expense based on the id provided
 tags:
   - Expenses
 parameters:
-  - name: user_id
+  - name: expense_id
     in: path
     type: string
     required: true

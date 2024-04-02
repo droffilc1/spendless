@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Initialeses the models package"""
+"""Initializes the models package"""
 
 from models.engine.db_storage import DBStorage
 
