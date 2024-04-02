@@ -68,10 +68,10 @@ class DBStorage:
         self.__session = Session
 
     def close(self):
-        """Call remove methid on the private instance attribute"""
+        """Call remove method on the private instance attribute"""
         self.__session.remove()
 
-    def get(self, cls, id):
+    def get(self, cls, key, value):
         """Returns the object based on the class name and its ID, or
         None if not found
         """
@@ -79,11 +79,16 @@ class DBStorage:
             return None
 
         all_cls = models.storage.all(cls)
-        for value in all_cls.values():
-            if (value.id == id):
-                return value
+        for obj in all_cls.values():
+            if getattr(obj, key) == value:
+                return obj
 
         return None
+
+    def rollback(self):
+        """Rollback the current transaction."""
+        self.__session.rollback()
+
 
     def count(self, cls=None):
         """Count the number of objects in storage"""

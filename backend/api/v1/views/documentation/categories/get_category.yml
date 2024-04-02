@@ -1,12 +1,12 @@
-Gets a specific category by ID or the list of all categories if no ID is specied
+Gets a specific category by ID or the list of all categories if no ID is specified
 ---
 tags:
   - Category
 parameters:
-  - name: user_id
+  - name: category_id
     in: path
     type: string
-    required: false
+    required: true
     description: the unique id of the category
 responses:
   404:

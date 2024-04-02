@@ -15,8 +15,8 @@ def get_categories():
     """
     all_categories = storage.all(Category).values()
     list_categories = []
-    for user in all_categories:
-        list_categories.append(user.to_dict())
+    for category in all_categories:
+        list_categories.append(category.to_dict())
     return jsonify(list_categories)
 
 
@@ -25,7 +25,7 @@ def get_categories():
 @swag_from('documentation/categories/get_category.yml', methods=['GET'])
 def get_category(category_id):
     """Retrieves a category"""
-    category = storage.get(Category, category_id)
+    category = storage.get(Category, 'category_id', category_id)
     if not category:
         abort(404)
     return jsonify(category.to_dict())
@@ -37,7 +37,7 @@ def get_category(category_id):
 def delete_category(category_id):
     """Deletes a category object"""
 
-    category = storage.get(Category, category_id)
+    category = storage.get(Category, 'category_id', category_id)
     if not category:
         abort(404)
 
@@ -55,8 +55,7 @@ def post_category():
         abort(400, "Not a JSON")
 
     data = request.get_json()
-    if not all(key in data for key in
-               ['name', 'expense']):
+    if not all(key in data for key in ['name']):
         abort(400, "Missing required fields")
 
     try:
@@ -70,9 +69,9 @@ def post_category():
 @app_views.route('/categories/<category_id>', methods=['PUT'],
                  strict_slashes=False)
 @swag_from('documentation/categories/put_category.yml', methods=['PUT'])
-def put_category(categoy_id):
+def put_category(category_id):
     """Updates a category"""
-    category = storage.get(Category, categoy_id)
+    category = storage.get(Category, 'category_id', category_id)
 
     if not category:
         abort(404)

@@ -3,7 +3,7 @@ Posts a new expense.
 tags:
   - Expenses
 parameters:
-  - name: user_id
+  - name: expense_id
     in: path
     type: string
     required: true

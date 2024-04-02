@@ -3,7 +3,7 @@ Updates the category info based on ID
 tags:
   - Categories
 parameters:
-  - name: user_id
+  - name: category_id
     in: path
     type: string
     required: true

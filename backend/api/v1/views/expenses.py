@@ -26,7 +26,7 @@ def get_expenses():
 @swag_from('documentation/expenses/get_expense.yml', methods=['GET'])
 def get_expense(expense_id):
     """Retrieves an expense"""
-    expense = storage.get(Expense, expense_id)
+    expense = storage.get(Expense, 'expense_id', expense_id)
     if not expense:
         abort(404)
     return jsonify(expense.to_dict())
@@ -38,7 +38,7 @@ def get_expense(expense_id):
 def delete_expense(expense_id):
     """Deletes an expense object"""
 
-    expense = storage.get(Expense, expense_id)
+    expense = storage.get(Expense, 'expense_id', expense_id)
     if not expense:
         abort(404)
 
@@ -71,8 +71,8 @@ def post_expense():
 @app_views.route('/expenses/<user_id>', methods=['PUT'], strict_slashes=False)
 @swag_from('documentation/expenses/put_expense.yml', methods=['PUT'])
 def put_expense(user_id):
-    """Updateds an expense"""
-    expense = storage.get(Expense, user_id)
+    """Updates an expense"""
+    expense = storage.get(Expense, 'user_id', user_id)
 
     if not expense:
         abort(404)
