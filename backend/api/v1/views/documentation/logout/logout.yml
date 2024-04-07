@@ -10,10 +10,21 @@ responses:
     description: Unauthorized - User is not authenticated.
 security:
   - cookieAuth: []
+requestBody:
+  required: false
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          logout:
+            type: boolean
+            default: true
+  cookieAuth: []
+  components:
+    securitySchemes:
+      cookieAuth:
+        type: apiKey
+        in: cookie
+        name: session
 
-components:
-  securitySchemes:
-    cookieAuth:
-      type: apiKey
-      in: cookie
-      name: session

@@ -5,7 +5,6 @@ from os import getenv
 from flask import Flask, make_response, jsonify
 from flask_cors import CORS
 from flask_login import LoginManager
-from flask_jwt_extended import JWTManager
 from flasgger import Swagger
 from models import storage
 from models.user import User
@@ -13,10 +12,13 @@ from api.v1.views import app_views
 
 
 app = Flask(__name__)
+cors = CORS(app, supports_credentials=True,
+            resources={r"/api/v1/*": {"origins": "*"}})
+
+# Register blueprints, set secret key, configure login manager, etc.
 app.register_blueprint(app_views)
 app.secret_key = 'SECRET_KEY'
 login_manager = LoginManager(app)
-cors = CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 
 
 @app.route('/')
@@ -41,18 +43,17 @@ def not_found(error):
     """
     return make_response(jsonify({"error": "Not found"}), 404)
 
+
 @login_manager.user_loader
 def loader(user_id):
     """Load users from the database"""
-    return storage.get(User, 'user_id', user_id)
+    return storage.get(User, 'id', user_id)
 
 
 app.config['SWAGGER'] = {
     'title': 'Spendless RESTful API'
 }
 Swagger(app)
-
-JWTManager(app)
 
 
 if __name__ == "__main__":

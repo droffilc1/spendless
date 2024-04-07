@@ -21,7 +21,7 @@ def get_analytics():
     total_expenses = sum(expense.amount for expense in user.expenses)
 
     expenses_category = {}
-    for expense in current_user.expenses:
+    for expense in user.expenses:
         category_name = expense.category.name
         expenses_category.setdefault(category_name, 0)
         expenses_category[category_name] += expense.amount

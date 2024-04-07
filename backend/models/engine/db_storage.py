@@ -89,7 +89,6 @@ class DBStorage:
         """Rollback the current transaction."""
         self.__session.rollback()
 
-
     def count(self, cls=None):
         """Count the number of objects in storage"""
         all_class = classes.values()
