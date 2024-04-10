@@ -6,6 +6,7 @@ from flask import Flask, make_response, jsonify
 from flask_cors import CORS
 from flask_login import LoginManager
 from flasgger import Swagger
+from dotenv import load_dotenv
 from models import storage
 from models.user import User
 from api.v1.views import app_views
@@ -17,8 +18,10 @@ cors = CORS(app, supports_credentials=True,
 
 # Register blueprints, set secret key, configure login manager, etc.
 app.register_blueprint(app_views)
-app.secret_key = 'SECRET_KEY'
+load_dotenv()
+app.secret_key = getenv('SECRET_KEY', 'default_secret_key_value')
 login_manager = LoginManager(app)
+login_manager.login_view = 'app_views.login'
 
 
 @app.route('/')

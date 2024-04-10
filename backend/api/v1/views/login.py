@@ -10,7 +10,7 @@ from models.user import User
 from models import storage
 
 
-@app_views.route('/login', methods=['POST'])
+@app_views.route('/login', methods=['POST'], endpoint='login')
 @swag_from('documentation/login/post_login.yml', methods=['POST'])
 def login():
     """User login"""

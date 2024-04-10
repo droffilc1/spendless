@@ -3,27 +3,25 @@ Posts a new expense.
 tags:
   - Expenses
 parameters:
-  - name: expense_id
-    in: path
-    type: string
-    required: true
-    description: The id of the User to link to
-  - name: user_id and name
+  - name: body
     in: body
     required: true
-    requires:
-      - user_id
-      - name
-    properties:
-      user_id:
-        type: string
-      name:
-        type: string
-
+    schema:
+      type: object
+      properties:
+        amount:
+          type: number
+          description: The amount of the expense.
+        category:
+          type: string
+          description: The category of the expense.
+        description:
+          type: string
+          description: The description of the expense (optional).
 responses:
   404:
     description: resource not found!
   400:
-    description: missing user_id, name or invalid JSON
+    description: missing user_id, amount, or category, or invalid JSON
   201:
     description: Successful request

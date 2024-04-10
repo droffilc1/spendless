@@ -16,7 +16,6 @@ def get_expenses():
     all_expenses = storage.all(Expense).values()
     list_expenses = []
     for expense in all_expenses:
-        print("Expense:", expense)
         list_expenses.append(expense.to_dict())
     return jsonify(list_expenses)
 
