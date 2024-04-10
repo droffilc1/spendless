@@ -1,7 +1,7 @@
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Footer from "./components/Footer";
+import About from "./components/contents/About";
+import Footer from "./components/layout/Footer";
+import Hero from "./components/contents/Hero";
+import Navbar from "./components/layout/Navbar";
 
 
 const App = () => {

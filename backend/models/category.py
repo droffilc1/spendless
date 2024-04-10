@@ -10,4 +10,5 @@ class Category(BaseModel, Base):
     """Representation of a category."""
     __tablename__ = 'categories'
     name = Column(String(50), unique=True, nullable=False)
-    expenses = relationship('Expense', back_populates='category', lazy=True)
+    expenses = relationship('Expense', back_populates='category',
+                            cascade='all, delete-orphan')

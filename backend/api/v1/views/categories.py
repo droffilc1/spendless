@@ -25,7 +25,7 @@ def get_categories():
 @swag_from('documentation/categories/get_category.yml', methods=['GET'])
 def get_category(category_id):
     """Retrieves a category"""
-    category = storage.get(Category, 'category_id', category_id)
+    category = storage.get(Category, 'id', category_id)
     if not category:
         abort(404)
     return jsonify(category.to_dict())
@@ -37,7 +37,7 @@ def get_category(category_id):
 def delete_category(category_id):
     """Deletes a category object"""
 
-    category = storage.get(Category, 'category_id', category_id)
+    category = storage.get(Category, 'id', category_id)
     if not category:
         abort(404)
 
@@ -71,7 +71,7 @@ def post_category():
 @swag_from('documentation/categories/put_category.yml', methods=['PUT'])
 def put_category(category_id):
     """Updates a category"""
-    category = storage.get(Category, 'category_id', category_id)
+    category = storage.get(Category, 'id', category_id)
 
     if not category:
         abort(404)
