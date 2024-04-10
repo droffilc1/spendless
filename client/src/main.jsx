@@ -8,6 +8,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+
 import Registration from './components/auth/Register.jsx';
 import LogIn from './components/auth/Login.jsx';
 import Categories from './components/categories/Categories.jsx';
@@ -15,6 +16,7 @@ import Dashboard from './components/dashboard/Dashboard.jsx';
 import Expenses from './components/expenses/Expenses.jsx';
 import Analytics from './components/contents/Analytics.jsx';
 import Logout from './components/auth/Logout.jsx';
+
 
 const router = createBrowserRouter([
   {
