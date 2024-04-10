@@ -20,6 +20,7 @@ const Expenses = () => {
                 throw new Error('Failed to fetch expenses')
             }
             const data = await response.json()
+            console.log('Fetched expenses:', data);
             setExpenses(data)
         } catch (error) {
             console.error('Error fetching expenses:', error.message)
@@ -37,9 +38,12 @@ const Expenses = () => {
                 <h2 className="text-2xl font-bold mr-4">Expenses</h2>
             </div>
             <ExpenseForm fetchExpenses={fetchExpenses} />
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {expenses.map((expense) => (
-                    <ExpenseItem key={expense.id} expense={expense} />
+                    <ExpenseItem
+                    key={expense.id}
+                    expense={expense}
+                    fetchExpenses={fetchExpenses} />
                 ))}
             </div>
         </div>

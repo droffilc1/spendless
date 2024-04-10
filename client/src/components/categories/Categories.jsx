@@ -6,10 +6,6 @@ import CategoryForm from './CategoryForm';
 const Categories = () => {
     const [categories, setCategories] = useState([]);
 
-    useEffect(() => {
-        fetchCategories();
-    }, []);
-
     const fetchCategories = async () => {
         try {
             const response = await fetch('http://127.0.0.1:5000/api/v1/categories');
@@ -19,6 +15,11 @@ const Categories = () => {
             console.error('Error fetching categories:', error);
         }
     }
+
+    useEffect(() => {
+        fetchCategories();
+    }, []);
+
 
     return (
         <div className="container mx-auto py-8 px-4">
