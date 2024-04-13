@@ -2,11 +2,10 @@
 # Client
 
 ## Overview
-Globomantics is a web application that helps people to get access to houses in Europe
 
-**Deployed Application:** https://www.cliffordmapesa.tech
+![client-cover](https://github.com/droffilc1/spendless/assets/97587370/dfc4d75c-9f34-49e4-a6ad-3a21f19c0c3a)
 
-![client-cover]()
+
 
 ## Running the project
 
