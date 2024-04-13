@@ -1,6 +1,8 @@
 # SpendLess
 ## Overview
 
+![image](https://github.com/droffilc1/spendless/assets/97587370/a800c332-cca0-43c7-9c14-6a4cb4e33e26)
+
 SpendLess is a web application for users to track their expenses. The application consists of a backend API built with Flask, which interacts with a MySQL database using SQLAlchemy ORM, and a frontend user interface developed with React.
 
 ## Live Demo
