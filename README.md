@@ -103,4 +103,4 @@ Give a ⭐️ if you like this project!
 
 [](https://github.com/droffilc1/spendless#-license)
 
-This project is [MIT](https://github.com/droffilc1/spendless/blob/main/MIT.md) licensed.
+This project is [MIT](https://github.com/droffilc1/spendless/blob/main/LICENSE) licensed.
