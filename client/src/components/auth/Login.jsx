@@ -44,7 +44,7 @@ const LogIn = () => {
   };
 
   return (
-    <div className="h-screen md:bg-[url('assets/auth.jpeg')] bg-stone-500 overflow-hidden bg-cover transition duration-300">
+    <div className="h-screen md:bg-[url('auth.jpeg')] bg-stone-500 overflow-hidden bg-cover transition duration-300">
       <Navbar />
       <div className="max-w-md mx-auto">
         <h2 className="text-2xl font-bold mb-4">LogIn</h2>
