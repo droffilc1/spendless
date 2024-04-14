@@ -77,7 +77,7 @@ cd spendless
 
 ## Reference
 
-[How To Secure Nginx with Let's Encrypt on Ubuntu]('https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-22-04#step-4-obtaining-an-ssl-certificate')\
+[How To Secure Nginx with Let's Encrypt on Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-22-04#step-4-obtaining-an-ssl-certificate)\
 [SSL Server Test](https://www.ssllabs.com/ssltest/analyze)\
 [How To Install Nginx on Ubuntu 22.04](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-22-04#step-6-getting-familiar-with-important-nginx-files-and-directories)\
 [How To Deploy a React Application with Nginx on Ubuntu](https://www.digitalocean.com/community/tutorials/deploy-react-application-with-nginx-on-ubuntu)\
