@@ -8,7 +8,7 @@ const Categories = () => {
 
     const fetchCategories = async () => {
         try {
-            const response = await fetch('http://127.0.0.1:5000/api/v1/categories');
+            const response = await fetch('https://cliffordmapesa.tech/api/v1/categories');
             const data = await response.json()
             setCategories(data);
         } catch (error) {

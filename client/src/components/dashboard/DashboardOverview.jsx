@@ -11,7 +11,7 @@ const DashboardOverview = () => {
     const fetchSummaryData = async () => {
       try {
         // Fetch summary data from the backend API
-        const response = await fetch('http://127.0.0.1:5000/api/v1/analytics');
+        const response = await fetch('https://cliffordmapesa.tech/api/v1/analytics');
         if (!response.ok) {
           throw new Error('Failed to fetch dashboard overview data');
         }
@@ -29,7 +29,7 @@ const DashboardOverview = () => {
     async function fetchUsername() {
       try {
         if (username) {
-          const response = await fetch(`http://127.0.0.1:5000/api/users/${username}`);
+          const response = await fetch(`https://cliffordmapesa.tech/api/users/${username}`);
           if (response.ok) {
             const data = await response.json();
             setUsername(data.username);

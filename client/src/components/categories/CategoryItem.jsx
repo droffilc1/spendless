@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 const CategoryItem = ({ category, fetchCategories }) => {
     const handleDelete = async (categoryId) => {
         try {
-            const url = `http://127.0.0.1:5000/api/v1/categories/${categoryId}`;
+            const url = `https://cliffordmapesa.tech/api/v1/categories/${categoryId}`;
             const response = await fetch(url, {
                 method: 'DELETE',
             });
