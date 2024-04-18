@@ -1,14 +1,16 @@
 # SpendLess
 ## Overview
 
+SpendLess is a web application for users to track their expenses. The application consists of a backend API built with Flask, which interacts with a MySQL database using SQLAlchemy ORM, and a frontend user interface developed with React.
+
 ![image](https://github.com/droffilc1/spendless/assets/97587370/dfc4d75c-9f34-49e4-a6ad-3a21f19c0c3a)
 
-
-SpendLess is a web application for users to track their expenses. The application consists of a backend API built with Flask, which interacts with a MySQL database using SQLAlchemy ORM, and a frontend user interface developed with React.
 
 ## Live Demo
 
 For the link to the live demo, [Click here](https://cliffordmapesa.tech) 👈
+
+[Blog post](https://cliffordmapesa.hashnode.dev/how-spendless-came-to-life)
 
 ## Technology Stack
 
@@ -75,7 +77,7 @@ cd spendless
 
 ## Reference
 
-[How To Secure Nginx with Let's Encrypt on Ubuntu]('https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-22-04#step-4-obtaining-an-ssl-certificate')\
+[How To Secure Nginx with Let's Encrypt on Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-22-04#step-4-obtaining-an-ssl-certificate)\
 [SSL Server Test](https://www.ssllabs.com/ssltest/analyze)\
 [How To Install Nginx on Ubuntu 22.04](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-22-04#step-6-getting-familiar-with-important-nginx-files-and-directories)\
 [How To Deploy a React Application with Nginx on Ubuntu](https://www.digitalocean.com/community/tutorials/deploy-react-application-with-nginx-on-ubuntu)\
