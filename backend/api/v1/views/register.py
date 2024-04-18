@@ -32,8 +32,8 @@ def register():
     # Hash the password
     hashed_password = generate_password_hash(password)
 
-    # Create a new user instance
-    new_user = User(username=username, email=email, password_hash=hashed_password)
+    # Create a new user instance with hashed password
+    new_user = User(username=username, email=email, password=hashed_password)
 
     # Add the new user to the database
     try:
