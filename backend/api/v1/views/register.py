@@ -3,6 +3,7 @@
 
 from flask import request, jsonify, session
 from flask_login import login_user
+from werkzeug.security import generate_password_hash
 from flasgger import swag_from
 from api.v1.views import app_views
 from models.user import User
@@ -28,11 +29,11 @@ def register():
     if existing_user:
         return jsonify({'message': 'Email already registered'}), 400
 
-    # Create a new user instance
-    new_user = User(username=username, email=email)
+    # Hash the password
+    hashed_password = generate_password_hash(password)
 
-    # Set the password for the user
-    new_user.set_password(password)
+    # Create a new user instance
+    new_user = User(username=username, email=email, password_hash=hashed_password)
 
     # Add the new user to the database
     try:
