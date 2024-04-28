@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 """ objects that handle all default RestFul API actions for Users """
+from flask import abort, jsonify, make_response, request
+from flasgger.utils import swag_from
 from models.user import User
 from models import storage
 from api.v1.views import app_views
-from flask import abort, jsonify, make_response, request
-from flasgger.utils import swag_from
 
 
 @app_views.route('/users/<username>', methods=['GET'], strict_slashes=False)
@@ -16,6 +16,16 @@ def get_user(username):
         abort(404)
 
     return jsonify({'username': user.username})
+
+@app_views.route('/users/<user_id>', methods=['GET'], strict_slashes=False)
+@swag_from('documentation/user/get_user_id.yml', methods=['GET'])
+def get_user_id(user_id):
+    """ Retrieves an user """
+    user = storage.get(User, 'user_id', user_id)
+    if not user:
+        abort(404)
+
+    return jsonify(user.to_dict())
 
 
 @app_views.route('/users/<username>', methods=['PUT'], strict_slashes=False)

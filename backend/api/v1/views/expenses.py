@@ -2,7 +2,9 @@
 """Objects that handle all default Restful API actions for expenses"""
 from flask import abort, jsonify, make_response, request
 from flasgger import swag_from
+from flask_login import current_user
 from models.expense import Expense
+from models.category import Category
 from models import storage
 from api.v1.views import app_views
 
@@ -54,17 +56,37 @@ def post_expense():
     if not request.get_json():
         abort(400, "Not a JSON")
 
-    data = request.get_json()
-    if not all(key in data for key in
-               ['amount', 'description', 'category', 'user_id']):
-        abort(400, "Missing required fields")
+    data = request.get_json()  # Retrieve JSON data from request
 
-    try:
-        instance = Expense(**data)
-        instance.save()
-        return make_response(jsonify(instance.to_dict()), 201)
-    except Exception as e:
-        abort(500, f"Failed to create expense: {str(e)}")
+    amount = data.get('amount')
+    description = data.get('description', '')  # Optional description
+    category_name = data.get('category')  # Use 'category', not 'category_id'
+
+    if amount is None:
+        return jsonify({'error': 'Amount is a required field'}), 400
+
+    # Find the category by its name
+    # Custom method to find category by name
+    category = storage.get(Category, 'name', category_name)
+    if not category:
+        return jsonify({'error': 'Invalid category name'}), 400
+
+    # Get the current user's ID
+    user_id = current_user.id  # Extract the logged-in user's ID
+
+    # Create a new expense with the category ID
+    expense = Expense(
+        amount=float(amount),
+        description=description,
+        category_id=category.id,
+        user_id=user_id
+    )
+
+    # Save to storage
+    storage.new(expense)
+    storage.save()
+
+    return jsonify(expense.to_dict()), 201  # Return created expense
 
 
 @app_views.route('/expenses/<user_id>', methods=['PUT'], strict_slashes=False)
