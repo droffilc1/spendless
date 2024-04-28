@@ -8,9 +8,10 @@ SpendLess is a web application for users to track their expenses. The applicatio
 
 ## Live Demo
 
-For the link to the live demo, [Click here](https://cliffordmapesa.tech) 👈
+For the link to the live demo, [Click here](https://spendless.ink) 👈
 
 [Blog post](https://cliffordmapesa.hashnode.dev/how-spendless-came-to-life)
+[Project slides][https://docs.google.com/presentation/d/13kdNIZpNa1aWhp_JmAzDbzenE41hELvo933tf162sPQ/edit?usp=sharing]
 
 ## Technology Stack
 
@@ -26,7 +27,7 @@ For the link to the live demo, [Click here](https://cliffordmapesa.tech) 👈
 ### DevOps:
 
 - Digital Ocean server for hosting
-- .tech domain for online presence
+- Domain for online presence
 - Nginx web server for handling HTTP requests
 - Gunicorn application server for serving Flask application
 - Certbot for SSL encryption
