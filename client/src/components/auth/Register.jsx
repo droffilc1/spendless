@@ -8,6 +8,7 @@ const Registration = () => {
     email: '',
     password: ''
   });
+  const [errorMessage, setErrorMessage] = useState(''); // State to store error message
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -15,10 +16,12 @@ const Registration = () => {
       ...formData,
       [e.target.name]: e.target.value
     });
+    setErrorMessage(''); // Clear error message on input change
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorMessage(''); // Clear any previous error message before submitting
     try {
       const response = await fetch('https://spendless.ink/api/v1/register', {
         method: 'POST',
@@ -30,10 +33,11 @@ const Registration = () => {
         // Redirect to dashboard after successful registration
         navigate('/dashboard');
       } else {
-        console.error('Registration error', response.statusText);
+        const errorData = await response.json(); // Get error message from server response
+        setErrorMessage(errorData.message || 'Registration failed. Please try again.'); // Display error message
       }
     } catch (error) {
-      console.error('Registration error', error);
+      setErrorMessage('An unexpected error occurred. Please try again later.'); // Display a generic error message
     }
   };
 
@@ -89,10 +93,17 @@ const Registration = () => {
             Register
           </button>
         </form>
-        <p className='mt-3'>Already have an account? <a href="/login">Login</a></p>
+
+        {errorMessage && ( // Display error message if there's any
+          <div className="mt-3 text-red-600">
+            {errorMessage}
+          </div>
+        )}
+
+        <p className="mt-3">Already have an account? <a href="/login">Login</a></p>
       </div>
     </div>
   );
-}
+};
 
 export default Registration;
