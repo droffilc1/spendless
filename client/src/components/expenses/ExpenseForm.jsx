@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-const ExpenseForm = ({ fetchExpenses }) => {
+const ExpenseForm = ({ fetchExpenses, userId }) => {
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState('');
   const [category, setCategory] = useState('');
@@ -13,7 +13,7 @@ const ExpenseForm = ({ fetchExpenses }) => {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch('https://cliffordmapesa.tech/api/v1/categories');
+      const response = await fetch('https://spendless.ink/api/v1/categories');
       if (!response.ok) {
         throw new Error('Failed to fetch categories');
       }
@@ -27,24 +27,25 @@ const ExpenseForm = ({ fetchExpenses }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://cliffordmapesa.tech/api/v1/expenses', {
+      const response = await fetch('https://spendless.ink/api/v1/expenses', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           // Add authorization header if needed
         },
         body: JSON.stringify({
-          description,
           amount: parseFloat(amount),
-          category,
+          description,
+          category_id: category,
+          user_id: userId
         }),
       });
       if (!response.ok) {
         throw new Error('Failed to add expense');
       }
-      // setDescription('');
-      // setAmount('');
-      // setCategory('');
+      setDescription('');
+      setAmount('');
+      setCategory('');
       fetchExpenses(); // Fetch expenses again to update the list
     } catch (error) {
       console.error('Error adding expense:', error.message);
@@ -88,7 +89,7 @@ const ExpenseForm = ({ fetchExpenses }) => {
           >
             <option value="">Select category</option>
             {categories.map(cat => (
-              <option key={cat.id} value={cat.id}>{cat.name}</option>
+              <option key={cat.id} value={cat.id}>{cat.name}</option> // Display category name
             ))}
           </select>
         </div>
@@ -99,7 +100,8 @@ const ExpenseForm = ({ fetchExpenses }) => {
 };
 
 ExpenseForm.propTypes = {
-  fetchExpenses: PropTypes.func.isRequired
+  fetchExpenses: PropTypes.func.isRequired,
+  userId: PropTypes.string.isRequired
 };
 
 export default ExpenseForm;

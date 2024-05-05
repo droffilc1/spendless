@@ -7,7 +7,7 @@ const CategoryForm = ({ fetchCategories }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('https://cliffordmapesa.tech/api/v1/categories', {
+            const response = await fetch('https://spendless.ink/api/v1/categories', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

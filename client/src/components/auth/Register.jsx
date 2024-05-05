@@ -20,7 +20,7 @@ const Registration = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://cliffordmapesa.tech/api/v1/register', {
+      const response = await fetch('https://spendless.ink/api/v1/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)

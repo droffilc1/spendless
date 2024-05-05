@@ -25,7 +25,7 @@ def login():
         return jsonify({
             'message': 'An error occurred while processing your request',
             'error': str(e)}
-            ), 500
+        ), 500
 
     # Check if user exists and password is correct
     if not user or not check_password_hash(user.password, password):

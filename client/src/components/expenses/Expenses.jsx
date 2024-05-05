@@ -9,7 +9,7 @@ const Expenses = () => {
 
     const fetchExpenses = async () => {
         try {
-            const response = await fetch('https://cliffordmapesa.tech/api/v1/expenses', {
+            const response = await fetch('https://spendless.ink/api/v1/expenses', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -41,9 +41,9 @@ const Expenses = () => {
             <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {expenses.map((expense) => (
                     <ExpenseItem
-                    key={expense.id}
-                    expense={expense}
-                    fetchExpenses={fetchExpenses} />
+                        key={expense.id}
+                        expense={expense}
+                        fetchExpenses={fetchExpenses} />
                 ))}
             </div>
         </div>
