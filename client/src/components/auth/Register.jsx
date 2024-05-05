@@ -20,8 +20,8 @@ const Registration = () => {
   };
 
   const validateForm = () => {
-    const { Name, email, password } = formData;
-    if (!Name || !email || !password) {
+    const { username, email, password } = formData;
+    if (!username || !email || !password) {
       return false; // Invalid form data
     }
     return true; // Valid form data
@@ -62,7 +62,7 @@ const Registration = () => {
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-black text-sm font-bold mb-2" htmlFor="Name">
-              Name
+              Username
             </label>
             <input
               type="text"
