@@ -60,16 +60,17 @@ def post_expense():
 
     amount = data.get('amount')
     description = data.get('description', '')  # Optional description
-    category_name = data.get('category')  # Use 'category', not 'category_id'
+    # retrieve category using 'category_id'
+    category_id = data.get('category_id')
 
     if amount is None:
         return jsonify({'error': 'Amount is a required field'}), 400
 
     # Find the category by its name
     # Custom method to find category by name
-    category = storage.get(Category, 'name', category_name)
+    category = storage.get(Category, 'id', category_id)
     if not category:
-        return jsonify({'error': 'Invalid category name'}), 400
+        return jsonify({'error': 'Invalid category ID'}), 400
 
     # Get the current user's ID
     user_id = current_user.id  # Extract the logged-in user's ID
