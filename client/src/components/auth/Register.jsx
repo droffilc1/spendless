@@ -4,7 +4,7 @@ import Navbar from '../layout/Navbar';
 
 const Registration = () => {
   const [formData, setFormData] = useState({
-    Name: '',
+    username: '',
     email: '',
     password: '',
   });
@@ -66,9 +66,9 @@ const Registration = () => {
             </label>
             <input
               type="text"
-              id="Name"
-              name="Name"
-              value={formData.Name}
+              id="username"
+              name="username"
+              value={formData.username}
               onChange={handleChange}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Enter your name"
