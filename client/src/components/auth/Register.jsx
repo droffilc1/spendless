@@ -6,38 +6,51 @@ const Registration = () => {
   const [formData, setFormData] = useState({
     Name: '',
     email: '',
-    password: ''
+    password: '',
   });
-  const [errorMessage, setErrorMessage] = useState(''); // State to store error message
+  const [errorMessage, setErrorMessage] = useState(''); // State for error messages
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
-    setErrorMessage(''); // Clear error message on input change
+    setErrorMessage(''); // Clear error message when user starts typing
+  };
+
+  const validateForm = () => {
+    const { Name, email, password } = formData;
+    if (!Name || !email || !password) {
+      return false; // Invalid form data
+    }
+    return true; // Valid form data
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrorMessage(''); // Clear any previous error message before submitting
+
+    if (!validateForm()) { // Check if the form data is valid
+      setErrorMessage('All fields are required.'); // Display error message if validation fails
+      return;
+    }
+
+    setErrorMessage(''); // Clear error message if the form is valid
     try {
       const response = await fetch('https://spendless.ink/api/v1/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
-        // Redirect to dashboard after successful registration
-        navigate('/dashboard');
+        navigate('/dashboard'); // Redirect after successful registration
       } else {
-        const errorData = await response.json(); // Get error message from server response
-        setErrorMessage(errorData.message || 'Registration failed. Please try again.'); // Display error message
+        const errorData = await response.json();
+        setErrorMessage(errorData.message || 'Registration failed. Please try again.'); // Display server error message
       }
     } catch (error) {
-      setErrorMessage('An unexpected error occurred. Please try again later.'); // Display a generic error message
+      setErrorMessage('An unexpected error occurred. Please try again later.'); // Generic error message
     }
   };
 
@@ -48,7 +61,9 @@ const Registration = () => {
         <h2 className="text-2xl font-bold mb-4">Registration</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-black text-sm font-bold mb-2" htmlFor="Name">Name</label>
+            <label className="block text-black text-sm font-bold mb-2" htmlFor="Name">
+              Name
+            </label>
             <input
               type="text"
               id="Name"
@@ -61,7 +76,9 @@ const Registration = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-black text-sm font-bold mb-2" htmlFor="email">Email</label>
+            <label className="block text-black text-sm font-bold mb-2" htmlFor="email">
+              Email
+            </label>
             <input
               type="email"
               id="email"
@@ -74,7 +91,9 @@ const Registration = () => {
             />
           </div>
           <div className="mb-6">
-            <label className="block text-black text-sm font-bold mb-2" htmlFor="password">Password</label>
+            <label className="block text-black text-sm font-bold mb-2" htmlFor="password">
+              Password
+            </label>
             <input
               type="password"
               id="password"
@@ -94,13 +113,13 @@ const Registration = () => {
           </button>
         </form>
 
-        {errorMessage && ( // Display error message if there's any
-          <div className="mt-3 text-red-600">
-            {errorMessage}
-          </div>
+        {errorMessage && ( // Display error message if there's one
+          <div className="mt-3 text-red-600">{errorMessage}</div>
         )}
 
-        <p className="mt-3">Already have an account? <a href="/login">Login</a></p>
+        <p className="mt-3">
+          Already have an account? <a href="/login">Login</a>
+        </p>
       </div>
     </div>
   );
