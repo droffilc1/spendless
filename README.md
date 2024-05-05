@@ -8,9 +8,10 @@ SpendLess is a web application for users to track their expenses. The applicatio
 
 ## Live Demo
 
-For the link to the live demo, [Click here](https://cliffordmapesa.tech) 👈
+For the link to the live demo, [Click here](https://spendless.ink) 👈
 
-[Blog post](https://cliffordmapesa.hashnode.dev/how-spendless-came-to-life)
+[Blog post](https://cliffordmapesa.hashnode.dev/how-spendless-came-to-life)\
+[Project slides](https://docs.google.com/presentation/d/13kdNIZpNa1aWhp_JmAzDbzenE41hELvo933tf162sPQ/edit?usp=sharing)
 
 ## Technology Stack
 
@@ -26,7 +27,7 @@ For the link to the live demo, [Click here](https://cliffordmapesa.tech) 👈
 ### DevOps:
 
 - Digital Ocean server for hosting
-- .tech domain for online presence
+- Domain for online presence
 - Nginx web server for handling HTTP requests
 - Gunicorn application server for serving Flask application
 - Certbot for SSL encryption
@@ -85,7 +86,8 @@ cd spendless
 [Initial Server Setup with Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04)\
 [SECTION 3 HELP](https://docs.google.com/document/d/1KtK5lm2cTzs6eudFUEtBCo8Zdt3Pl-VKhlald4NzNKo/edit)\
 [Alembic](https://alembic.sqlalchemy.org/en/latest/tutorial.html)\
-[How To Serve Flask Applications with Gunicorn and Nginx on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-20-04)
+[How To Serve Flask Applications with Gunicorn and Nginx on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-20-04)\
+[ERROR 1698 (28000): Access denied for user 'root'@'localhost'](https://stackoverflow.com/questions/56213019/how-to-add-a-favicon-to-a-next-js-static-site)
 
 ## Authors
 [Clifford Mapesa](https://github.com/droffilc1)
